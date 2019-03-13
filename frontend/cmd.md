@@ -1,0 +1,1 @@
+docker run -v /app/node_modules -v /c/frontend/:/app -p 3000:3000 53fb45c8a43a
