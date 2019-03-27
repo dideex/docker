@@ -68,11 +68,13 @@ class Fib extends Component {
         </form>
 
         <h3>Indexes I have seen:</h3>
-        <SeenIndexes />
+        {SeenIndexes}
 
         <h3>Calculated Values:</h3>
-        <Values />
+        {Values}
       </div>
     )
   }
 }
+
+export default Fib
