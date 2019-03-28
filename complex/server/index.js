@@ -6,7 +6,7 @@ const cors = require('cors')
 
 const app = express()
 app.use(cors())
-app.use(bodyParser.josn())
+app.use(bodyParser.json())
 
 // Postgress setup
 const { Pool } = require('pg')
@@ -33,7 +33,7 @@ const redisClient = redis.createClient({
   port: keys.redisPort,
   retry_strategy: () => 1000
 })
-const redisPublisher = redisClient.dublicate()
+const redisPublisher = redisClient.duplicate()
 
 // Exprees route handlers
 
