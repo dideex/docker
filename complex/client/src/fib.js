@@ -1,80 +1,77 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from 'react';
+import axios from 'axios';
 
 class Fib extends Component {
   state = {
     seenIndexes: [],
     values: {},
     index: ''
-  }
+  };
 
   componentDidMount() {
-    this._fetchValues()
-    this._fetchIndexes()
+    this.fetchValues();
+    this.fetchIndexes();
   }
 
-  async _fetchValues() {
-    const values = await axios.get('/api/values/current')
-    this.setState({ values: values.data })
+  async fetchValues() {
+    const values = await axios.get('/api/values/current');
+    this.setState({ values: values.data });
   }
 
-  async _fetchIndexes() {
-    const indexes = await axios.get('/api/values/all')
-    this.setState({ seenIndexes: indexes.data })
+  async fetchIndexes() {
+    const seenIndexes = await axios.get('/api/values/all');
+    this.setState({
+      seenIndexes: seenIndexes.data
+    });
   }
 
-  get SeenIndexes() {
-    return this.state.seenIndexes.map(({ number }) => number).join`, `
+  handleSubmit = async event => {
+    event.preventDefault();
+
+    await axios.post('/api/values', {
+      index: this.state.index
+    });
+    this.setState({ index: '' });
+  };
+
+  renderSeenIndexes() {
+    return this.state.seenIndexes.map(({ number }) => number).join(', ');
   }
 
-  get Values() {
-    const entries = []
+  renderValues() {
+    const entries = [];
+
     for (let key in this.state.values) {
       entries.push(
         <div key={key}>
           For index {key} I calculated {this.state.values[key]}
         </div>
-      )
+      );
     }
-    return Object.entries(this.state.values).map(([key, value]) => (
-      <div key={key}>
-        For index {key} I calculated {value}
-      </div>
-    ))
-  }
 
-  _handleSubmit = async e => {
-    e.preventDefault()
-    await axios.post('/api/values', {
-      index: this.state.index
-    })
-
-    this.setState({ index: '' })
+    return entries;
   }
 
   render() {
-    const { SeenIndexes, Values } = this
     return (
       <div>
-        <form onSubmit={this._handleSubmit}>
-          <label htmlFor="index-input">Enter your index: </label>
+        <form onSubmit={this.handleSubmit}>
+          <label>Enter your index:</label>
           <input
             value={this.state.index}
-            onChange={({ target }) => this.setState({ index: target.value })}
-            id="index-input"
-            type="text"
+            onChange={event => this.setState({ index: event.target.value })}
           />
           <button>Submit</button>
         </form>
 
         <h3>Indexes I have seen:</h3>
-        {SeenIndexes}
+        {this.renderSeenIndexes()}
 
         <h3>Calculated Values:</h3>
-        {Values}
+        {this.renderValues()}
       </div>
-    )
+    );
   }
 }
 
-export default Fib
+export default Fib;
