@@ -7,6 +7,6 @@ metadata:
 spec:
   containers:
     - name: client
-      image: dideex/complex-client
+      image: dideex/complex-worker
       ports:
         - containerPort: 3000
