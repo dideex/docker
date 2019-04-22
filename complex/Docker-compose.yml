@@ -17,7 +17,7 @@ services:
       context: ./server
     volumes:
       - /app/node_modules
-      - /c/complex/server:/app
+      - ./server:/app
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
@@ -32,14 +32,14 @@ services:
       context: ./client
     volumes:
       - /app/node_modules
-      - /c/complex/client:/app
+      - ./client:/app
   worker:
     build:
       dockerfile: Dockerfile.dev
       context: ./worker
     volumes:
       - /app/node_modules
-      - /c/complex/worker:/app
+      - ./worker:/app
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
