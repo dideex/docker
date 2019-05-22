@@ -21,8 +21,14 @@ docker logs [container id]
 _run command inside the container_
 ```bash
 docker exec -it [container id] [command]
+docker exec -it 4e3d15293585 sh
 ```
 
+## Build
+_build an image_
+```bash
+docker build .
+```
 
 ## Common 
 _show running containers_
