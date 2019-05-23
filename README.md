@@ -13,7 +13,7 @@ docker create hello-world
 docker start -a [container id]
 ```
 
-_get stdout from the contaienr_
+_get stdout from the container_
 ```bash
 docker logs [container id]
 ```
@@ -22,6 +22,7 @@ _run command inside the container_
 ```bash
 docker exec -it [container id] [command]
 docker exec -it 4e3d15293585 sh
+docker run -it alpine sh
 ```
 
 ## Build
@@ -30,11 +31,21 @@ _build an image_
 docker build .
 ```
 
+_build an image with tag_
+```bash
+docker build -t dideex/name:tag .
+```
+
 ## Common 
 _show running containers_
 ```bash
 docker ps
 docker ps --all
+```
+
+_commit a command into container_
+```bash
+docker commit -c 'CMD ["redis-server"]' [container id]
 ```
 
 _clean cache and other staff_
