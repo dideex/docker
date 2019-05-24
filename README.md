@@ -1,10 +1,15 @@
 # Docker commands
 
 ## Run
-_run command with params_
+_command run with params_
 ```bash
 docker run busybox echo hi there
 docker run busybox ls
+```
+
+_container run with port mapping_
+```bash
+docker run -p 80:3000 [container id]
 ```
 
 _separated run_
