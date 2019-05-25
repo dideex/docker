@@ -30,6 +30,11 @@ docker exec -it 4e3d15293585 sh
 docker run -it alpine sh
 ```
 
+_run container on background_
+```bash
+docker run -d [container id]
+```
+
 ## Build
 _build an image_
 ```bash
@@ -39,6 +44,19 @@ docker build .
 _build an image with tag_
 ```bash
 docker build -t dideex/name:tag .
+```
+
+## Compose
+
+_run composed images_
+```bash
+docker-compose up
+docker-compose up --build
+```
+
+_stop the running composed containers_
+```bash
+docker-compose down
 ```
 
 ## Common 
