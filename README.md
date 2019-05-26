@@ -59,6 +59,11 @@ _stop the running composed containers_
 docker-compose down
 ```
 
+_compose status(depends on current directory)_
+```bash
+docker-compose ps
+```
+
 ## Common 
 _show running containers_
 ```bash
