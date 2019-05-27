@@ -46,6 +46,12 @@ _build an image with tag_
 docker build -t dideex/name:tag .
 ```
 
+_build with custom Dockerfile_
+```bash
+docker build -f Dockerfile.dev
+```
+
+
 ## Compose
 
 _run composed images_
@@ -64,7 +70,7 @@ _compose status(depends on current directory)_
 docker-compose ps
 ```
 
-## Common 
+## Common
 _show running containers_
 ```bash
 docker ps
@@ -82,7 +88,16 @@ docker system prune
 ```
 
 _shutdown the container_
-```dashe
+```bash
 docker stop [container id]
 docker kill [container id]
+```
+
+## Volumes
+
+_add spareted volume to the container_
+```bash
+docker run -p 80:3000 -v /app/node_modules -v $(pwd):/app [container id]
+# for docker toolbox
+docker run -p 80:3000 -v /app/node_modules -v /c/frontend/:/app [container id]
 ```
