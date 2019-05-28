@@ -93,6 +93,11 @@ docker stop [container id]
 docker kill [container id]
 ```
 
+_Attach local standard input, output, and error streams to a running container_
+```bash
+docker attach [container id]
+```
+
 ## Volumes
 
 _add spareted volume to the container_
