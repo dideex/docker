@@ -70,6 +70,11 @@ _compose status(depends on current directory)_
 docker-compose ps
 ```
 
+_start silent_
+```bash
+docker-compose [container id] -d
+```
+
 ## Common
 _show running containers_
 ```bash
